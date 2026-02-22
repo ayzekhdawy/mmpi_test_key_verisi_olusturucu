@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MMPI Testi - İlerleme</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .test-container {
+            max-width: 720px;
+            margin: 40px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        .progress {
+            height: 8px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            background-color: #e9ecef;
+        }
+        .question-text {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            min-height: 90px;
+        }
+
+        /* Şık Butonlar */
+        .btn-option {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 18px;
+            font-size: 1.1rem;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            background: white;
+            text-align: left;
+            transition: all 0.2s ease;
+            color: #495057;
+        }
+        .btn-option:hover {
+            border-color: #3b82f6;
+            background-color: #eff6ff;
+            color: #0d6efd;
+            transform: translateY(-2px);
+        }
+        .btn-option:active {
+            transform: translateY(0);
+        }
+
+        /* Seçili Efekti */
+        .btn-option.selected {
+            background-color: #3b82f6;
+            color: white;
+            border-color: #3b82f6;
+        }
+
+        .hidden {
+            display: none;
+        }
+        .question-number {
+            color: #adb5bd;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        /* Zamanlayıcı */
+        .timer {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #3b82f6;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        /* Uyarı Mesajı */
+        .warning-box {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Zamanlayıcı -->
+<div class="timer" id="timer">⏱️ Süre: 00:00</div>
+
+<div class="container">
+    <div class="test-container">
+        <!-- Uyarı kutusu -->
+        <div class="warning-box">
+            <strong>ℹ️ Bilgi:</strong> Bu test yaklaşık 30-45 dakika sürecektir. Lütfen her soruyu dikkatlice cevaplayın.
+        </div>
+
+        <div class="d-flex justify-content-between mb-2 align-items-center">
+            <span id="progress-text" class="text-muted small">Hazırlanıyor...</span>
+            <span id="percentage" class="badge bg-primary rounded-pill">0%</span>
+        </div>
+        <div class="progress">
+            <div id="progress-bar" class="progress-bar bg-primary" role="progressbar" style="width: 0%"></div>
+        </div>
+
+        <form id="mmpiForm" action="/submit-mmpi" method="POST">
+
+            {% for q in questions %}
+            <div class="question-slide {% if not loop.first %}hidden{% endif %}" data-index="{{ loop.index0 }}">
+                <div class="question-number">SORU {{ loop.index }} / {{ total }}</div>
+                <div class="question-text">{{ q['Question'] }}</div>
+
+                <input type="radio" name="{{ q['Question #'] }}" value="Evet" id="q{{ q['Question #'] }}_yes" class="d-none" >
+                <input type="radio" name="{{ q['Question #'] }}" value="Hayır" id="q{{ q['Question #'] }}_no" class="d-none" >
+
+                <button type="button" class="btn btn-option" onclick="selectOption(this, 'q{{ q['Question #'] }}_yes')">
+                    Evet
+                </button>
+
+                <button type="button" class="btn btn-option" onclick="selectOption(this, 'q{{ q['Question #'] }}_no')">
+                    Hayır
+                </button>
+            </div>
+            {% endfor %}
+
+            <div id="finish-slide" class="hidden text-center py-5">
+                <h2 class="mb-3">🎉 Tebrikler!</h2>
+                <p class="text-muted mb-4">566 soruluk testi başarıyla tamamladınız.</p>
+                <p>Sonuçlarınızın doğrulanması için son bir adım kaldı.</p>
+
+                <button type="submit" class="btn btn-success btn-lg px-5 py-3 shadow">
+                    Son Aşamaya Geç (Kalibrasyon) 👉
+                </button>
+
+                <div class="mt-4">
+                    <small class="text-muted">Test süresi: <span id="completion-time"></span></small>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<script>
+    let currentSlide = 0;
+    const totalSlides = {{ total }};
+    const slides = document.querySelectorAll('.question-slide');
+    const progressBar = document.getElementById('progress-bar');
+    const progressText = document.getElementById('progress-text');
+    const percentageText = document.getElementById('percentage');
+    const timerElement = document.getElementById('timer');
+    const completionTimeElement = document.getElementById('completion-time');
+
+    // Zamanlayıcı değişkenleri
+    let startTime = new Date();
+    let seconds = 0;
+    let timerInterval;
+
+    // Zamanlayıcıyı başlat
+    function startTimer() {
+        timerInterval = setInterval(() => {
+            seconds++;
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = seconds % 60;
+            timerElement.textContent = `⏱️ Süre: ${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+        }, 1000);
+    }
+
+    // Zamanlayıcıyı durdur ve tamamlanma süresini göster
+    function stopTimer() {
+        clearInterval(timerInterval);
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = seconds % 60;
+        completionTimeElement.textContent = `${minutes} dakika ${remainingSeconds} saniye`;
+    }
+
+    // İlk açılışta ilerleme çubuğunu ayarla ve zamanlayıcıyı başlat
+    updateProgress();
+    startTimer();
+
+    function selectOption(btn, inputId) {
+        // 1. İlgili gizli inputu işaretle
+        document.getElementById(inputId).checked = true;
+
+        // 2. Görsel efekti uygula (Maviye boya)
+        const parent = btn.parentElement;
+        const buttons = parent.querySelectorAll('.btn-option');
+        buttons.forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+
+        // 3. Hafif gecikmeyle diğer soruya geç
+        setTimeout(() => {
+            nextQuestion();
+        }, 250);
+    }
+
+    function nextQuestion() {
+        // Mevcut soruyu gizle
+        slides[currentSlide].classList.add('hidden');
+
+        currentSlide++;
+
+        if (currentSlide < totalSlides) {
+            // Sonraki soruyu göster
+            slides[currentSlide].classList.remove('hidden');
+        } else {
+            // Test bitti, bitiş ekranını göster ve zamanlayıcıyı durdur
+            document.getElementById('finish-slide').classList.remove('hidden');
+            stopTimer();
+        }
+        updateProgress();
+    }
+
+    function updateProgress() {
+        // Eğer test bittiyse %100 yap
+        let percent = 0;
+        if(currentSlide >= totalSlides){
+            percent = 100;
+            progressText.innerText = "Tamamlandı";
+        } else {
+            percent = Math.round((currentSlide / totalSlides) * 100);
+            progressText.innerText = `Soru ${currentSlide + 1} / ${totalSlides}`;
+        }
+
+        progressBar.style.width = percent + "%";
+        percentageText.innerText = percent + "%";
+    }
+
+    // Sayfa yüklenirken ilk soruyu göster
+    window.addEventListener('load', () => {
+        if (slides.length > 0) {
+            slides[0].classList.remove('hidden');
+        }
+    });
+
+    // Kullanıcı geri/ileri tuşlarına bastığında formun gönderilmesini engelle
+    window.addEventListener('beforeunload', (e) => {
+        if (currentSlide < totalSlides - 1) {
+            e.preventDefault();
+            e.returnValue = '';
+            return 'Test tamamlanmadı. Çıkmak istediğinizden emin misiniz?';
+        }
+    });
+</script>
+
+</body>
+</html>

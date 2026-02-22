@@ -1,0 +1,508 @@
+{
+    "Depresyon": {
+        "6": {
+            "answer": "Evet",
+            "correlation": 0.549,
+            "p_value": 0.022
+        },
+        "14": {
+            "answer": "Evet",
+            "correlation": 0.595,
+            "p_value": 0.012
+        },
+        "18": {
+            "answer": "Hayir",
+            "correlation": -0.619,
+            "p_value": 0.008
+        },
+        "50": {
+            "answer": "Hayir",
+            "correlation": -0.595,
+            "p_value": 0.012
+        },
+        "51": {
+            "answer": "Hayir",
+            "correlation": -0.696,
+            "p_value": 0.002
+        },
+        "75": {
+            "answer": "Evet",
+            "correlation": 0.572,
+            "p_value": 0.016
+        },
+        "85": {
+            "answer": "Evet",
+            "correlation": 0.696,
+            "p_value": 0.002
+        },
+        "90": {
+            "answer": "Evet",
+            "correlation": 0.518,
+            "p_value": 0.033
+        },
+        "103": {
+            "answer": "Hayir",
+            "correlation": -0.549,
+            "p_value": 0.022
+        },
+        "110": {
+            "answer": "Hayir",
+            "correlation": -0.494,
+            "p_value": 0.044
+        },
+        "112": {
+            "answer": "Evet",
+            "correlation": 0.549,
+            "p_value": 0.022
+        },
+        "133": {
+            "answer": "Hayir",
+            "correlation": -0.494,
+            "p_value": 0.044
+        },
+        "137": {
+            "answer": "Evet",
+            "correlation": 0.58,
+            "p_value": 0.015
+        },
+        "143": {
+            "answer": "Evet",
+            "correlation": 0.58,
+            "p_value": 0.015
+        },
+        "165": {
+            "answer": "Hayir",
+            "correlation": -0.518,
+            "p_value": 0.033
+        },
+        "175": {
+            "answer": "Evet",
+            "correlation": 0.595,
+            "p_value": 0.012
+        },
+        "216": {
+            "answer": "Evet",
+            "correlation": 0.572,
+            "p_value": 0.016
+        },
+        "230": {
+            "answer": "Evet",
+            "correlation": 0.485,
+            "p_value": 0.049
+        },
+        "265": {
+            "answer": "Hayir",
+            "correlation": -0.595,
+            "p_value": 0.012
+        },
+        "285": {
+            "answer": "Evet",
+            "correlation": 0.696,
+            "p_value": 0.002
+        },
+        "346": {
+            "answer": "Evet",
+            "correlation": 0.646,
+            "p_value": 0.005
+        },
+        "353": {
+            "answer": "Evet",
+            "correlation": 0.518,
+            "p_value": 0.033
+        },
+        "361": {
+            "answer": "Hayir",
+            "correlation": -0.494,
+            "p_value": 0.044
+        },
+        "367": {
+            "answer": "Hayir",
+            "correlation": -0.549,
+            "p_value": 0.022
+        },
+        "387": {
+            "answer": "Evet",
+            "correlation": 0.518,
+            "p_value": 0.033
+        },
+        "430": {
+            "answer": "Evet",
+            "correlation": 0.572,
+            "p_value": 0.016
+        },
+        "436": {
+            "answer": "Evet",
+            "correlation": 0.549,
+            "p_value": 0.022
+        },
+        "462": {
+            "answer": "Hayir",
+            "correlation": -0.549,
+            "p_value": 0.022
+        },
+        "463": {
+            "answer": "Evet",
+            "correlation": 0.619,
+            "p_value": 0.008
+        },
+        "503": {
+            "answer": "Hayir",
+            "correlation": -0.518,
+            "p_value": 0.033
+        },
+        "508": {
+            "answer": "Hayir",
+            "correlation": -0.494,
+            "p_value": 0.044
+        },
+        "556": {
+            "answer": "Evet",
+            "correlation": 0.58,
+            "p_value": 0.015
+        },
+        "565": {
+            "answer": "Hayir",
+            "correlation": -0.494,
+            "p_value": 0.044
+        }
+    },
+    "Paranoya": {
+        "9": {
+            "answer": "Evet",
+            "correlation": 0.573,
+            "p_value": 0.016
+        },
+        "22": {
+            "answer": "Evet",
+            "correlation": 0.796,
+            "p_value": 0.0
+        },
+        "23": {
+            "answer": "Evet",
+            "correlation": 0.597,
+            "p_value": 0.011
+        },
+        "26": {
+            "answer": "Hayir",
+            "correlation": -0.672,
+            "p_value": 0.003
+        },
+        "43": {
+            "answer": "Hayir",
+            "correlation": -0.486,
+            "p_value": 0.048
+        },
+        "49": {
+            "answer": "Evet",
+            "correlation": 0.547,
+            "p_value": 0.023
+        },
+        "55": {
+            "answer": "Hayir",
+            "correlation": -0.529,
+            "p_value": 0.029
+        },
+        "72": {
+            "answer": "Evet",
+            "correlation": 0.721,
+            "p_value": 0.001
+        },
+        "75": {
+            "answer": "Evet",
+            "correlation": 0.59,
+            "p_value": 0.013
+        },
+        "87": {
+            "answer": "Hayir",
+            "correlation": -0.641,
+            "p_value": 0.006
+        },
+        "91": {
+            "answer": "Hayir",
+            "correlation": -0.486,
+            "p_value": 0.048
+        },
+        "92": {
+            "answer": "Hayir",
+            "correlation": -0.486,
+            "p_value": 0.048
+        },
+        "102": {
+            "answer": "Evet",
+            "correlation": 0.486,
+            "p_value": 0.048
+        },
+        "111": {
+            "answer": "Hayir",
+            "correlation": -0.512,
+            "p_value": 0.036
+        },
+        "119": {
+            "answer": "Evet",
+            "correlation": 0.616,
+            "p_value": 0.008
+        },
+        "180": {
+            "answer": "Evet",
+            "correlation": 0.559,
+            "p_value": 0.02
+        },
+        "197": {
+            "answer": "Hayir",
+            "correlation": -0.489,
+            "p_value": 0.046
+        },
+        "200": {
+            "answer": "Evet",
+            "correlation": 0.512,
+            "p_value": 0.036
+        },
+        "211": {
+            "answer": "Hayir",
+            "correlation": -0.486,
+            "p_value": 0.048
+        },
+        "222": {
+            "answer": "Hayir",
+            "correlation": -0.486,
+            "p_value": 0.048
+        },
+        "228": {
+            "answer": "Evet",
+            "correlation": 0.486,
+            "p_value": 0.048
+        },
+        "231": {
+            "answer": "Evet",
+            "correlation": 0.512,
+            "p_value": 0.036
+        },
+        "256": {
+            "answer": "Hayir",
+            "correlation": -0.547,
+            "p_value": 0.023
+        },
+        "296": {
+            "answer": "Hayir",
+            "correlation": -0.486,
+            "p_value": 0.048
+        },
+        "356": {
+            "answer": "Evet",
+            "correlation": 0.59,
+            "p_value": 0.013
+        },
+        "369": {
+            "answer": "Hayir",
+            "correlation": -0.698,
+            "p_value": 0.002
+        },
+        "379": {
+            "answer": "Evet",
+            "correlation": 0.486,
+            "p_value": 0.048
+        },
+        "388": {
+            "answer": "Evet",
+            "correlation": 0.65,
+            "p_value": 0.005
+        },
+        "445": {
+            "answer": "Hayir",
+            "correlation": -0.486,
+            "p_value": 0.048
+        },
+        "448": {
+            "answer": "Hayir",
+            "correlation": -0.482,
+            "p_value": 0.05
+        },
+        "459": {
+            "answer": "Evet",
+            "correlation": 0.746,
+            "p_value": 0.001
+        },
+        "473": {
+            "answer": "Evet",
+            "correlation": 0.559,
+            "p_value": 0.02
+        },
+        "487": {
+            "answer": "Hayir",
+            "correlation": -0.59,
+            "p_value": 0.013
+        },
+        "489": {
+            "answer": "Evet",
+            "correlation": 0.486,
+            "p_value": 0.048
+        },
+        "496": {
+            "answer": "Hayir",
+            "correlation": -0.645,
+            "p_value": 0.005
+        },
+        "515": {
+            "answer": "Evet",
+            "correlation": 0.512,
+            "p_value": 0.036
+        },
+        "531": {
+            "answer": "Hayir",
+            "correlation": -0.486,
+            "p_value": 0.048
+        },
+        "535": {
+            "answer": "Hayir",
+            "correlation": -0.512,
+            "p_value": 0.036
+        },
+        "552": {
+            "answer": "Hayir",
+            "correlation": -0.573,
+            "p_value": 0.016
+        }
+    },
+    "Anksiyete": {
+        "34": {
+            "answer": "Hayir",
+            "correlation": -0.605,
+            "p_value": 0.01
+        },
+        "36": {
+            "answer": "Evet",
+            "correlation": 0.526,
+            "p_value": 0.03
+        },
+        "38": {
+            "answer": "Hayir",
+            "correlation": -0.744,
+            "p_value": 0.001
+        },
+        "62": {
+            "answer": "Evet",
+            "correlation": 0.582,
+            "p_value": 0.014
+        },
+        "81": {
+            "answer": "Hayir",
+            "correlation": -0.564,
+            "p_value": 0.018
+        },
+        "93": {
+            "answer": "Evet",
+            "correlation": 0.494,
+            "p_value": 0.044
+        },
+        "96": {
+            "answer": "Evet",
+            "correlation": 0.526,
+            "p_value": 0.03
+        },
+        "97": {
+            "answer": "Hayir",
+            "correlation": -0.526,
+            "p_value": 0.03
+        },
+        "116": {
+            "answer": "Hayir",
+            "correlation": -0.494,
+            "p_value": 0.044
+        },
+        "141": {
+            "answer": "Evet",
+            "correlation": 0.506,
+            "p_value": 0.038
+        },
+        "207": {
+            "answer": "Evet",
+            "correlation": 0.501,
+            "p_value": 0.041
+        },
+        "219": {
+            "answer": "Hayir",
+            "correlation": -0.526,
+            "p_value": 0.03
+        },
+        "227": {
+            "answer": "Hayir",
+            "correlation": -0.494,
+            "p_value": 0.044
+        },
+        "277": {
+            "answer": "Hayir",
+            "correlation": -0.526,
+            "p_value": 0.03
+        },
+        "283": {
+            "answer": "Evet",
+            "correlation": 0.635,
+            "p_value": 0.006
+        },
+        "336": {
+            "answer": "Hayir",
+            "correlation": -0.722,
+            "p_value": 0.001
+        },
+        "341": {
+            "answer": "Hayir",
+            "correlation": -0.526,
+            "p_value": 0.03
+        },
+        "390": {
+            "answer": "Evet",
+            "correlation": 0.744,
+            "p_value": 0.001
+        },
+        "406": {
+            "answer": "Evet",
+            "correlation": 0.501,
+            "p_value": 0.041
+        },
+        "434": {
+            "answer": "Evet",
+            "correlation": 0.569,
+            "p_value": 0.017
+        },
+        "439": {
+            "answer": "Evet",
+            "correlation": 0.569,
+            "p_value": 0.017
+        },
+        "451": {
+            "answer": "Hayir",
+            "correlation": -0.564,
+            "p_value": 0.018
+        },
+        "474": {
+            "answer": "Hayir",
+            "correlation": -0.494,
+            "p_value": 0.044
+        },
+        "476": {
+            "answer": "Evet",
+            "correlation": 0.564,
+            "p_value": 0.018
+        },
+        "490": {
+            "answer": "Evet",
+            "correlation": 0.605,
+            "p_value": 0.01
+        },
+        "535": {
+            "answer": "Evet",
+            "correlation": 0.494,
+            "p_value": 0.044
+        },
+        "551": {
+            "answer": "Hayir",
+            "correlation": -0.722,
+            "p_value": 0.001
+        },
+        "566": {
+            "answer": "Hayir",
+            "correlation": -0.67,
+            "p_value": 0.003
+        }
+    }
+}
